@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Alunos App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="static/css/alunos.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+
+crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="banner">Alunos Demo App</h1>
+      <div class="section editor"> <label for="fname">Primeiro Nome <input id="fname"
+
+            type="text"> </label> <br>
+        <label for="lname">Ultimo Nome <input id="lname" type="text"> </label>
+        <br>
+        <button id="create">Create</button> <button id="update">Update</button>
+        <button id="delete">Delete</button> <button id="reset">Reset</button> </div>
+      <div class="alunos">
+        <table>
+          <caption>Alunos</caption>
+          <thead>
+            <tr>
+              <th>Primeiro Nome</th>
+              <th>Ultimo Nome</th>
+              <th>Update Time</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="error"> </div>
+    </div>
+    <script src="static/js/alunos.js"></script>
+    
+  </body>
+</html>
