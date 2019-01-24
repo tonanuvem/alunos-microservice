@@ -1,0 +1,134 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger ReST Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /alunos:
+    get:
+      operationId: alunos.read_all
+      tags:
+        - Alunos
+      summary: Read the entire list of alunos
+      description: Read the list of Alunos
+      parameters:
+        - name: length
+          in: query
+          type: integer
+          description: Number of Alunos to get from Alunos
+          required: false
+        - name: offset
+          in: query
+          type: integer
+          description: Offset from beginning of list where to start gathering Alunos
+          required: false
+      responses:
+        200:
+          description: Successfully read Alunos list operation
+          schema:
+            type: array
+            items:
+              properties:
+                fname:
+                  type: string
+                lname:
+                  type: string
+                timestamp:
+                  type: string
+
+    post:
+      operationId: alunos.create
+      tags:
+        - Alunos
+      summary: Create a person and add it to the Alunos list
+      description: Create a new person in the Alunos list
+      parameters:
+        - name: person
+          in: body
+          description: Person to create
+          required: True
+          schema:
+            type: object
+            properties:
+              fname:
+                type: string
+                description: First name of person to create
+              lname:
+                type: string
+                description: Last name of person to create
+      responses:
+        201:
+          description: Successfully created person in list
+
+  /alunos/{lname}:
+    get:
+      operationId: alunos.read_one
+      tags:
+        - Alunos
+      summary: Read one person from the Alunos list
+      description: Read one person from the Alunos list
+      parameters:
+        - name: lname
+          in: path
+          description: Last name of the person to get from the list
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully read person from Alunos list operation
+          schema:
+            properties:
+              fname:
+                type: string
+              lname:
+                type: string
+              timestamp:
+                type: string
+
+    put:
+      operationId: alunos.update
+      tags:
+        - Alunos
+      summary: Update a person in the Alunos list
+      description: Update a person in the Alunos list
+      parameters:
+        - name: lname
+          in: path
+          description: Last name of the person to update in the list
+          type: string
+          required: True
+        - name: person
+          in: body
+          schema:
+            type: object
+            properties:
+              fname:
+                type: string
+              lname:
+                type: string
+      responses:
+        200:
+          description: Successfully updated person in Alunos list
+
+    delete:
+      operationId: alunos.delete
+      tags:
+        - Alunos
+      summary: Delete a person from the Alunos list
+      description: Delete a person
+      parameters:
+        - name: lname
+          in: path
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully deleted a person from Alunos list
