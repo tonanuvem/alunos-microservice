@@ -222,14 +222,17 @@ ns.controller = (function(m, v) {
     });
 
     $event_pump.on('model_create_success', function(e, data) {
+        view.build_table(data);
         model.read();
     });
 
     $event_pump.on('model_update_success', function(e, data) {
+        view.build_table(data);
         model.read();
     });
 
     $event_pump.on('model_delete_success', function(e, data) {
+        view.build_table(data);
         model.read();
     });
 
