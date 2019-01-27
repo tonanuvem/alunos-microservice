@@ -191,7 +191,7 @@ ns.controller = (function(m, v) {
     });
 
     $('#reset').click(function() {
-        location.reload();
+        //location.reload();
         model.read();
         view.reset();
     })
@@ -233,7 +233,7 @@ ns.controller = (function(m, v) {
     });
 
     $event_pump.on('model_error', function(e, xhr, textStatus, errorThrown) {
-        let error_msg = textStatus + ': ' + errorThrown + ' - ' + xhr.responseJSON.detail;
+        let error_msg = textStatus + ': ' + errorThrown + ' - ' /*+ xhr.responseJSON.detail*/;
         view.error(error_msg);
         console.log(error_msg);
     })
