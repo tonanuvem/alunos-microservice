@@ -191,6 +191,7 @@ ns.controller = (function(m, v) {
     });
 
     $('#reset').click(function() {
+        location.reload();
         model.read();
         view.reset();
     })
