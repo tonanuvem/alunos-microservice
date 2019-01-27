@@ -192,7 +192,8 @@ ns.controller = (function(m, v) {
 
     $('#reset').click(function() {
         //location.reload();
-        model.read();
+        //model.read();
+        window.location.reload();
         view.reset();
     })
 
