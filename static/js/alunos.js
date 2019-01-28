@@ -108,7 +108,7 @@ ns.view = (function() {
             let rows = ''
 
             // clear the table
-            $('.people table > tbody').empty();
+            $('.alunos table > tbody').empty();
 
             // did we get a people array?
             if (people) {
