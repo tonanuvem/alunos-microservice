@@ -2,7 +2,7 @@
 from datetime import datetime
 
 # 3rd party modules
-from flask import make_response, abort
+from flask import jsonify, make_response, abort
 
 
 def get_timestamp():
@@ -36,7 +36,15 @@ def read_all():
     :return:        json string of list of people
     """
     # Create the list of people from our data
-    return [PEOPLE[key] for key in sorted(PEOPLE.keys())]
+    dict_alunos = [PEOPLE[key] for key in sorted(PEOPLE.keys())]
+    alunos = jsonify(dict_alunos)
+    qtd = len(dict_alunos)
+    content_range = "alunos 0-"+str(qtd)+"/"+str(qtd)
+    # Configura headers
+    alunos.headers['Access-Control-Allow-Origin'] = '*'
+    alunos.headers['Content-Range'] = content_range
+    return alunos
+
 
 
 def read_one(lname):
