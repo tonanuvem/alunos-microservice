@@ -234,7 +234,7 @@ ns.controller = (function(m, v) {
     });
 
     $event_pump.on('model_error', function(e, xhr, textStatus, errorThrown) {
-        let error_msg = "Msg de Erro:" + textStatus + ': ' + errorThrown + ' - ' /*+ xhr.responseJSON.detail*/;
+        let error_msg = "Msg de Erro:" + textStatus + ': ' + errorThrown + ' - ' + xhr.responseJSON.detail;
         view.error(error_msg);
         console.log(error_msg);
     })
