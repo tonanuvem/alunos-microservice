@@ -35,7 +35,7 @@ ns.model = (function() {
                 url: 'api/alunos',
                 accepts: 'application/json',
                 contentType: 'application/json',
-                dataType: 'json',
+                //dataType: 'json',
                 data: JSON.stringify({
                     'fname': fname,
                     'lname': lname
