@@ -42,6 +42,7 @@ def read_all():
     content_range = "alunos 0-"+str(qtd)+"/"+str(qtd)
     # Configura headers
     alunos.headers['Access-Control-Allow-Origin'] = '*'
+    alunos.headers['Access-Control-Expose-Headers'] = 'Content-Range'
     alunos.headers['Content-Range'] = content_range
     return alunos
 
