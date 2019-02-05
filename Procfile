@@ -1,1 +1,1 @@
-web: pyhton3 server.py
+web: pyhton server.py
