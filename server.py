@@ -22,6 +22,11 @@ def home():
     """
     return render_template('home.html')
 
+# Create a URL route in our application for "/"
+@app.route('/upload')
+def upload():
+    return render_template('upload.html')
+
 # If we're running in stand alone mode, run the application
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
