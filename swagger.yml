@@ -2,9 +2,10 @@ swagger: "2.0"
 info:
   description: This is the swagger file that goes with our server code
   version: "1.0.0"
-  title: Swagger ReST Article
+  title: Alunos e Uploader Rest Swagger
 consumes:
   - application/json
+  - multipart/form-data
 produces:
   - application/json
 
@@ -132,3 +133,95 @@ paths:
       responses:
         200:
           description: Successfully deleted a person from Alunos list
+
+  /uploader:
+    get:
+      operationId: uploader.read_all
+      tags:
+        - Uploader
+      summary: Read the entire list of Arquivos
+      description: Read the list of Arquivos
+      parameters:
+        - name: length
+          in: query
+          type: integer
+          description: Number of Arquivos to get from Arquivos
+          required: false
+        - name: offset
+          in: query
+          type: integer
+          description: Offset from beginning of list where to start gathering Arquivos
+          required: false
+      responses:
+        200:
+          description: Successfully read Arquivos list operation
+          schema:
+            type: array
+            items:
+              properties:
+                name:
+                  type: string
+                timestamp:
+                  type: string
+
+    post:
+      operationId: uploader.create
+      tags:
+        - Uploader
+      summary: Create and add it to the Arquivos list
+      description: Create a new file in the Arquivos list
+      parameters:
+        - name: person
+          in: body
+          description: Arquivos to create
+          required: True
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of Arquivo to create
+              file:
+                type: string
+                description: File to be uploaded
+      responses:
+        201:
+          description: Successfully created Arquivo in list
+
+  /uploader/{name}:
+    get:
+      operationId: uploader.read_one
+      tags:
+        - Uploader
+      summary: Read one from the Arquivos list
+      description: Read one from the Arquivos list
+      parameters:
+        - name: name
+          in: path
+          description: Name of the Arquivo to get from the list
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully read from Arquivos list operation
+          schema:
+            properties:
+              name:
+                type: string
+              timestamp:
+                type: string
+
+    delete:
+      operationId: uploader.delete
+      tags:
+        - Uploader
+      summary: Delete from the Arquivos list
+      description: Delete Arquivo
+      parameters:
+        - name: name
+          in: path
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully deleted from Arquivos list
