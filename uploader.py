@@ -3,6 +3,7 @@ from datetime import datetime
 
 # 3rd party modules
 from flask import jsonify, make_response, abort
+import hashlib
 
 
 def get_timestamp():
@@ -13,10 +14,12 @@ def get_timestamp():
 FILES = {
     "1": {
         "name": "exemplo.pdf",
+        "md5" : "",
         "timestamp": get_timestamp(),
     },
     "2": {
         "name": "outro-exemplo.pdf",
+        "md5" : "",
         "timestamp": get_timestamp(),
     },
 }
@@ -72,11 +75,13 @@ def create(file):
 
     # Does the person exist already?
     if name not in FILE and name is not None:
-      try:
+      #try:
         f = request.files['file']
         f.save(secure_filename(f.filename))
-        FILE[name] = {
+        md5_calculado = ashlib.md5(f).hexdigest()
+        FILE[md5_calculado] = {
             "name": name,
+            "md5" : md5_calculado,
             "timestamp": get_timestamp(),
         }
         return make_response(
